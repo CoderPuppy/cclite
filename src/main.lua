@@ -431,7 +431,7 @@ function love.mousepressed(x, y, button)
 			local termMouseX = math_bind(math.floor((x - _conf.terminal_guiScale) / Screen.pixelWidth) + 1,1,_conf.terminal_width)
 			local termMouseY = math_bind(math.floor((y - _conf.terminal_guiScale) / Screen.pixelHeight) + 1,1,_conf.terminal_height)
 
-			if button == "l" or button == "m" or button == "r" then
+			if button == "l" or button == "m" or button == "r" or button == 1 or button == 2 or button == 3 then
 				Computer.mouse.isPressed = true
 				Computer.mouse.lastTermX = termMouseX
 				Computer.mouse.lastTermY = termMouseY
@@ -653,7 +653,7 @@ function Computer:update()
 			self.mouse.lastTermX = termMouseX
 			self.mouse.lastTermY = termMouseY
 
-			table.insert (self.eventQueue, {"mouse_drag", love.mouse.isDown("r") and 2 or 1, termMouseX, termMouseY})
+			table.insert (self.eventQueue, {"mouse_drag", love.mouse.isDown(2) and 2 or 1, termMouseX, termMouseY})
 		end
 	end
 
